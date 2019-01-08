@@ -1,0 +1,163 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://localhost/helpers/ebayModules/json-schema.json",
+  "id": "/InventoryItem",
+  "title": "Inventory Item",
+  "description": "An inventory item to list to eBay",
+  "type": "object",
+  "properties": {
+    "availability": {
+      "type": "object",
+      "required": ["shipToLocationAvailability"],
+      "properties": {
+        "pickupAtLocationAvailbility": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "availabilityType": {
+                "type": "string",
+                "enum": ["IN_STOCK", "OUT_OF_STOCK", "SHIP_TO_STORE"]
+              },
+              "fulfillmentTime": {
+                "type": "object",
+                "properties": {
+                  "unit": {
+                    "type": "string",
+                    "enum": ["YEAR", "MONTH", "DAY"]
+                  },
+                  "value": {
+                    "type": "string"
+                  }
+                }
+              },
+              "merchantLocationKey": {
+                "type": "string"
+              },
+              "quantity": {
+                "type": "integer"
+              }
+            }
+          }
+        },
+        "shipToLocationAvailability": {
+          "type": "object",
+          "required": ["quantity"],
+          "properties": {
+            "quantity": {
+              "type": "integer"
+            }
+          }
+        }
+      }
+    },
+    "condition": {
+      "type": "string",
+      "enum": ["NEW", "LIKE_NEW", "USED"]
+    },
+    "conditionDescription": {
+      "type": "string"
+    },
+    "packageWeightAndSize": {
+      "type": "object",
+      "properties": {
+        "dimensions": {
+          "type": "object",
+          "properties": {
+            "height": {
+              "type": "number"
+            },
+            "length": {
+              "type": "number"
+            },
+            "unit": {
+              "type": "string",
+              "enum": ["INCH", "FEET", "CENTIMETER"]
+            },
+            "width": {
+              "type": "number"
+            }
+          }
+        },
+        "packageType": {
+          "type": "string"
+        },
+        "weight": {
+          "type": "object",
+          "properties": {
+            "unit": {
+              "type": "string",
+              "enum": ["POUND", "KILOGRAM", "OUNCE"]
+            },
+            "value": {
+              "type": "number"
+            }
+          }
+        }
+      }
+    },
+    "product": {
+      "type": "object",
+      "required": ["imageUrls", "title"],
+      "properties": {
+        "aspects": {
+          "type": "object"
+        },
+        "brand": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "imageUrls": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "mpn": {
+          "type": "string"
+        },
+        "subtitle": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "isbn": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "upc": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "ean": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "epid": {
+          "type": "string"
+        }
+      }
+    },
+    "sku": {
+      "type": "string"
+    },
+    "groupIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": ["sku", "availability", "condition", "product"]
+}

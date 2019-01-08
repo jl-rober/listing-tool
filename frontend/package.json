@@ -1,0 +1,29 @@
+{
+  "name": "frontend",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@material-ui/core": "^1.4.1",
+    "@material-ui/icons": "^2.0.1",
+    "ajv": "^6.5.2",
+    "fs": "0.0.1-security",
+    "prop-types": "^15.6.2",
+    "query-string": "^6.1.0",
+    "react": "^16.4.1",
+    "react-cookie": "^2.2.0",
+    "react-dom": "^16.4.1",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "1.1.4",
+    "react-swipeable-views": "^0.12.15",
+    "redirect": "^0.2.0",
+    "universal-cookie": "^2.2.0",
+    "universal-cookie-express": "^2.2.0"
+  },
+  "scripts": {
+    "start": "set HTTPS=true && set PORT=443 && react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "proxy": "https://localhost:3000"
+}
